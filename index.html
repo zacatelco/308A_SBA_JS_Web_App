@@ -4,19 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="styles.css"></script>
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" type="module" defer></script>
   </head>
   <body>
-    <h1>Product Search</h1>
+    <h1>Not Amazon</h1>
 
-    <div>
+    <div class="controls">
       <input
         type="text"
         id="search-bar"
         placeholder="Search for products..."
         oninput="searchProducts()"
       />
+      <select id="filter-category" onchange="filterByCategory()">
+        <option value="">Filter by category</option>
+      </select>
       <select id="filter-price" onchange="filterByPrice()">
         <option value="">Filter by price</option>
         <option value="asc">Low to High</option>
@@ -24,7 +27,16 @@
       </select>
     </div>
 
+    <form id="addProductForm">
+      <input type="text" id="productTitle" placeholder="Product Title" required />
+      <input type="number" id="productPrice" placeholder="Price" required />
+      <input type="text" id="productCategory" placeholder="Category" required />
+      <button type="submit">Add Product</button>
+  </form>
+
     <div id="loading">Loading products...</div>
     <div id="productList"></div>
+
+
   </body>
 </html>
